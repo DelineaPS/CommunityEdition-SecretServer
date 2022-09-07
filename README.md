@@ -2,6 +2,8 @@
 
 This Bookdown website is intended to serve as a resource for Delinea PS consultants and architects, as well as their customers on unique tasks related to Delinea's Server Suite product.
 
+Website: https://delineaps.github.io/CommunityEdition-ServerSuite/
+
 Additional resources:
 
 The **bookdown** book: https://bookdown.org/yihui/bookdown/

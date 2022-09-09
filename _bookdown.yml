@@ -10,5 +10,6 @@ language:
 rmd_subdir: true
 rmd_files: [
   "index.Rmd",
+  "articles/powershell-snippets/powershell-snippets.Rmd",
   "articles/how-to-install-xyz/how-to-install-xyz.Rmd"
 ]

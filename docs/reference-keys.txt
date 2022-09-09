@@ -10,4 +10,12 @@ bookdown-code-samples
 code-blocks
 images
 tables
+powershell-snippets
+privilege-related
+test-if-prompt-is-administrative
+net-framework-related
+display-current-.net-framework-version
+active-directory-related
+show-current-forest
+set-spn-for-a-user
 how-to-install-xyz

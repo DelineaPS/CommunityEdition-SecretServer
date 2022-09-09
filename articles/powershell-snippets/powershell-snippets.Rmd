@@ -1,0 +1,41 @@
+# PowerShell Snippets
+
+This section will contain various, helpful PowerShell snippets used by Professional Services.
+
+## Privilege-related
+
+### Test if prompt is administrative
+
+~~~{.lineAnchors}
+([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole( [Security.Principal.WindowsBuiltInRole] "Administrator")
+~~~
+
+Returns a `[System.Boolean]` `True` if prompt is an admin. `False` if it is not.
+
+## .NET Framework-related
+
+### Display current .NET Framework version
+
+~~~{.lineAnchors}
+(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full").Version
+~~~
+
+Returns the currently installed .NET Framework version as a `[System.String]`. For example `4.8.04084`.
+
+## Active Directory-related
+
+### Show current forest
+
+~~~{.lineAnchors}
+([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).Name
+~~~
+
+Returns the currently joined forest as a `[System.String]`. For example `domain.com`.
+
+### Set SPN for a user
+
+Sets an SPN for a designated user:
+
+~~~{.lineAnchors}
+Get-ADUser svc-username | Set-ADUser -ServicePrincipalNames @{Add='MSSQLSvc/MSSQLSERVER01.domain.com:1433'}
+~~~

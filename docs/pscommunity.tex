@@ -169,7 +169,7 @@
 
 \title{Delinea Community Reference Guide}
 \author{Delinea Professional Services}
-\date{2022-09-07}
+\date{2022-09-09}
 
 \begin{document}
 \maketitle
@@ -354,6 +354,64 @@ The following is the example code block from above:\newline
 \hline
 \end{tabular}
 \end{table}
+
+\hypertarget{powershell-snippets}{%
+\chapter{PowerShell Snippets}\label{powershell-snippets}}
+
+This section will contain various, helpful PowerShell snippets used by Professional Services.
+
+\hypertarget{privilege-related}{%
+\section{Privilege-related}\label{privilege-related}}
+
+\hypertarget{test-if-prompt-is-administrative}{%
+\subsection{Test if prompt is administrative}\label{test-if-prompt-is-administrative}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole( [Security.Principal.WindowsBuiltInRole] "Administrator")}
+\end{Highlighting}
+\end{Shaded}
+
+Returns a \texttt{{[}System.Boolean{]}} \texttt{True} if prompt is an admin. \texttt{False} if it is not.
+
+\hypertarget{net-framework-related}{%
+\section{.NET Framework-related}\label{net-framework-related}}
+
+\hypertarget{display-current-.net-framework-version}{%
+\subsection{Display current .NET Framework version}\label{display-current-.net-framework-version}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(Get{-}ItemProperty "HKLM:\textbackslash{}SOFTWARE\textbackslash{}Microsoft\textbackslash{}NET Framework Setup\textbackslash{}NDP\textbackslash{}v4\textbackslash{}Full").Version}
+\end{Highlighting}
+\end{Shaded}
+
+Returns the currently installed .NET Framework version as a \texttt{{[}System.String{]}}. For example \texttt{4.8.04084}.
+
+\hypertarget{active-directory-related}{%
+\section{Active Directory-related}\label{active-directory-related}}
+
+\hypertarget{show-current-forest}{%
+\subsection{Show current forest}\label{show-current-forest}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).Name}
+\end{Highlighting}
+\end{Shaded}
+
+Returns the currently joined forest as a \texttt{{[}System.String{]}}. For example \texttt{domain.com}.
+
+\hypertarget{set-spn-for-a-user}{%
+\subsection{Set SPN for a user}\label{set-spn-for-a-user}}
+
+Sets an SPN for a designated user:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Get{-}ADUser svc{-}username | Set{-}ADUser {-}ServicePrincipalNames @\{Add=\textquotesingle{}MSSQLSvc/MSSQLSERVER01.domain.com:1433\textquotesingle{}\}}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{how-to-install-xyz}{%
 \chapter{How to install XYZ}\label{how-to-install-xyz}}
